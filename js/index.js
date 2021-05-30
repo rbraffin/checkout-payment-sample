@@ -9,7 +9,8 @@ document.getElementById("checkout-btn").addEventListener("click", function() {
   
   var orderData = {
     quantity: document.getElementById("quantity").value,
-    description: document.getElementById("product-description").innerHTML,
+    title: document.getElementById("product-description").innerHTML,
+    description: "Celular de Tienda e-commerce",
     price: document.getElementById("unit-price").innerHTML,
     image: document.getElementById("product-image").src
   };
