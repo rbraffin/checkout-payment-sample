@@ -1,3 +1,7 @@
+const mp = new MercadoPago('APP_USR-6096a634-0b35-452c-94c9-a18adb8ffb15', {
+  locale: 'pt-BR'
+});
+
 //Handle call to backend and generate preference.
 document.getElementById("checkout-btn").addEventListener("click", function() {
 
@@ -20,7 +24,15 @@ document.getElementById("checkout-btn").addEventListener("click", function() {
           return response.json();
       })
       .then(function(preference) {
-          createCheckoutButton(preference.id);
+        mp.checkout({
+          preference: {
+              id: preference.id
+          },
+          render: {
+              container: '.container-payment', // Indica onde o botão de pagamento será exibido
+              label: 'Pague a compra', // Muda o texto do botão de pagamento (opcional)
+          }
+      });
           $(".shopping-cart").fadeOut(500);
           setTimeout(() => {
               $(".container_payment").show(500).fadeIn();
