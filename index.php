@@ -63,3 +63,4 @@ switch($_SERVER["REQUEST_URI"]){
         header('Content-Type: '.$content);
         readfile($file);          
 }
+*/
