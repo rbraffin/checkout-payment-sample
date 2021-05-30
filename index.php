@@ -40,16 +40,16 @@ switch($path){
         echo json_encode($response);
         break;        
     case '/feedback':
-        $respuesta = array(
+        $resposta = array(
             'Payment' => $_GET['payment_id'],
             'Status' => $_GET['status'],
             'MerchantOrder' => $_GET['merchant_order_id']        
         ); 
-        echo json_encode($respuesta);
+        echo json_encode($resposta);
         break;
     //Server static resources
     default:
-        $file = __DIR__ . '/../../client' . $path;
+        $file = $path;
         $extension = end(explode('.', $path));
         $content = 'text/html';
         switch($extension){
