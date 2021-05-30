@@ -10,10 +10,11 @@ document.getElementById("checkout-btn").addEventListener("click", function() {
   var orderData = {
     quantity: document.getElementById("quantity").value,
     description: document.getElementById("product-description").innerHTML,
-    price: document.getElementById("unit-price").innerHTML
+    price: document.getElementById("unit-price").innerHTML,
+    image: document.getElementById("product-image").src
   };
     
-  fetch("https://checkout-mercado-pago-pro.herokuapp.com/create_preference", {
+  fetch("/create_preference", {
           method: "POST",
           headers: {
               "Content-Type": "application/json",
@@ -29,7 +30,7 @@ document.getElementById("checkout-btn").addEventListener("click", function() {
               id: preference.id
           },
           render: {
-              container: '.container-payment', // Indica onde o botão de pagamento será exibido
+              container: '#button-checkout', // Indica onde o botão de pagamento será exibido
               label: 'Pague a compra', // Muda o texto do botão de pagamento (opcional)
           }
       });
