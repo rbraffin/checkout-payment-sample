@@ -13,7 +13,7 @@ document.getElementById("checkout-btn").addEventListener("click", function() {
     price: document.getElementById("unit-price").innerHTML
   };
     
-  fetch("/create_preference", {
+  fetch("https://checkout-mercado-pago-pro.herokuapp.com/create_preference", {
           method: "POST",
           headers: {
               "Content-Type": "application/json",
