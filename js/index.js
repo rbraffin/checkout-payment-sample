@@ -18,6 +18,7 @@ document.getElementById("checkout-btn").addEventListener("click", function() {
           method: "POST",
           headers: {
               "Content-Type": "application/json",
+              "X-Requested-With": "XMLHttpRequest"
           },
           body: JSON.stringify(orderData),
     })
