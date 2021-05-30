@@ -7,8 +7,10 @@ MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
 
 // $path = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 
+require 'client/index.html';
+/*
+
 switch($_SERVER["REQUEST_URI"]){
-    require 'client/index.html';
     case '':
     case '/':
         require 'client/index.html';
