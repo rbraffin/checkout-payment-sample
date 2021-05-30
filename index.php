@@ -56,6 +56,7 @@ switch($path){
             case 'js': $content = 'application/javascript'; break;
             case 'css': $content = 'text/css'; break;
             case 'png': $content = 'image/png'; break;
+            case 'jpg': $content = 'image/jpeg'; break;
         }
         header('Content-Type: '.$content);
         readfile($file);          
