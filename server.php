@@ -5,12 +5,12 @@ require 'vendor/autoload.php';
 MercadoPago\SDK::setAccessToken('APP_USR-334491433003961-030821-12d7475807d694b645722c1946d5ce5a-725736327');
 MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
 
-$path = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
+// $path = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 
-switch($path){
+switch($_SERVER["REQUEST_URI"]){
     case '':
     case '/':
-        require __DIR__ . 'client/index.html';
+        require 'client/index.html';
         break;
     case '/create_preference':
         $json = file_get_contents("php://input");
