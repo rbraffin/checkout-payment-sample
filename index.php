@@ -54,14 +54,14 @@ switch($path){
         );
     
         $preference->back_urls = array(
-            "success" => $_SERVER['SERVER_NAME'] . "/feedback",
+            "success" => $_SERVER['SERVER_NAME'] . "/success",
             "failure" => $_SERVER['SERVER_NAME'] . "/failure", 
             "pending" => $_SERVER['SERVER_NAME'] . "/pending"
         );
 
         $preference->auto_return = "approved"; 
 
-//        $preference->notification_url = "https://rbraffin-mp-commerce-php.herokuapp.com/notification.php";
+        $preference->notification_url = $_SERVER['SERVER_NAME'] . "/notification";
 
         $preference->save();
 
@@ -70,7 +70,10 @@ switch($path){
         ); 
         echo json_encode($response);
         break;        
-    case '/feedback':
+    case '/success':
+        require 'success.php';
+        break;
+    case '/pending':
         $resposta = array(
             'Payment' => $_GET['payment_id'],
             'Status' => $_GET['status'],
@@ -78,6 +81,14 @@ switch($path){
         ); 
         echo json_encode($resposta);
         break;
+    case '/failure':
+        $resposta = array(
+            'Payment' => $_GET['payment_id'],
+            'Status' => $_GET['status'],
+            'MerchantOrder' => $_GET['merchant_order_id']        
+        ); 
+        echo json_encode($resposta);
+        break;        
     //Server static resources
     default:
         $file = $path;
