@@ -54,9 +54,9 @@ switch($path){
         );
     
         $preference->back_urls = array(
-            "success" => "/feedback",
-            "failure" => "/failure", 
-            "pending" => "/pending"
+            "success" => $_SERVER['SERVER_NAME'] . "/feedback",
+            "failure" => $_SERVER['SERVER_NAME'] . "/failure", 
+            "pending" => $_SERVER['SERVER_NAME'] . "/pending"
         );
 
         $preference->auto_return = "approved"; 
