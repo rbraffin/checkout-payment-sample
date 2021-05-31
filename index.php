@@ -74,21 +74,15 @@ switch($path){
         require 'success.php';
         break;
     case '/pending':
-        $resposta = array(
-            'Payment' => $_GET['payment_id'],
-            'Status' => $_GET['status'],
-            'MerchantOrder' => $_GET['merchant_order_id']        
-        ); 
-        echo json_encode($resposta);
+        require 'pending.php';
         break;
     case '/failure':
-        $resposta = array(
-            'Payment' => $_GET['payment_id'],
-            'Status' => $_GET['status'],
-            'MerchantOrder' => $_GET['merchant_order_id']        
-        ); 
-        echo json_encode($resposta);
-        break;        
+        require 'failure.php';
+        break;
+    case '/notification':
+        $json = file_get_contents("php://input");
+        file_put_contents("latest-json.txt", $json);
+        break;
     //Server static resources
     default:
         $file = $path;

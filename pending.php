@@ -12,12 +12,7 @@
   <body>
     <main>
       <div class="backurl-message" style="text-align: center;">
-        <h1>Sucesso!</h1>
-        <p>'Payment' => <?php echo $_GET['payment_id'] ?>,
-          'PaymentMethod' => <?php echo $_GET['payment_method_id']?>,
-          'Status' => <?php echo $_GET['status']?>,
-          'ExternalReference' => <?php echo $_GET['external_reference']?>,
-          'MerchantOrder' => <?php echo $_GET['merchant_order_id']?></p>
+        <h1>Pagamento Pendente!</h1>
       </div>
     </main>
     <footer>
