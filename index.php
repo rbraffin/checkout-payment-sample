@@ -61,7 +61,7 @@ switch($path){
 
         $preference->auto_return = "approved"; 
 
-        $preference->notification_url = $_SERVER['SERVER_NAME'] . "/notification";
+        $preference->notification_url = $_SERVER['SERVER_NAME'] . "/notification?source_news=webhooks";
 
         $preference->save();
 
@@ -80,18 +80,24 @@ switch($path){
         require 'failure.php';
         break;
     case '/notification':
+	http_response_code(200);
+	file_put_contents("post-type.txt", $_POST["type"]);
         switch($_POST["type"]) {
             case "payment":
                 $payment = MercadoPago\Payment.find_by_id($_POST["id"]);
+		file_put_contents("switch.txt", "payment");
                 break;
             case "plan":
                 $plan = MercadoPago\Plan.find_by_id($_POST["id"]);
+		file_put_contents("switch.txt", "plan");
                 break;
             case "subscription":
                 $plan = MercadoPago\Subscription.find_by_id($_POST["id"]);
+		file_put_contents("switch.txt", "sub");
                 break;
             case "invoice":
                 $plan = MercadoPago\Invoice.find_by_id($_POST["id"]);
+		file_put_contents("switch.txt", "invoice");
                 break;
         }
         file_put_contents("latest-payment.txt", $payment);
