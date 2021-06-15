@@ -80,6 +80,21 @@ switch($path){
         require 'failure.php';
         break;
     case '/notification':
+        switch($_POST["type"]) {
+            case "payment":
+                $payment = MercadoPago\Payment.find_by_id($_POST["id"]);
+                break;
+            case "plan":
+                $plan = MercadoPago\Plan.find_by_id($_POST["id"]);
+                break;
+            case "subscription":
+                $plan = MercadoPago\Subscription.find_by_id($_POST["id"]);
+                break;
+            case "invoice":
+                $plan = MercadoPago\Invoice.find_by_id($_POST["id"]);
+                break;
+        }
+        file_put_contents("latest-payment.txt", $payment);
         $json = file_get_contents("php://input");
         file_put_contents("latest-json.txt", $json);
         break;
